@@ -137,7 +137,6 @@ Optional argument IACT signaling interactive use."
 (defcustom syntactic-close--ml-modes
   (list
    'html-mode
-   'nxml-mode
    'sgml-mode
    'xml-mode
    'xxml-mode
@@ -234,7 +233,7 @@ Argument ERG character to complement."
     (?\❨ ?\❩)
     (?\❬ ?\❭)
     (?\᚛ ?\᚜)
-    (?\〈 ?\〉)
+    (?\〈 ?\〉)
     (?\⧼ ?\⧽)
     (?\⟅ ?\⟆)
     (?\⸦ ?\⸧)
@@ -728,6 +727,8 @@ CLOSER, a string"
        (setq done (syntactic-close-emacs-lisp-close closer pps t)))
       (`ruby-mode
        (setq done (syntactic-close-ruby-close closer pps padding)))
+      (`nxml-mode
+       (setq done (nxml-finish-element)))
       (_
        (cond
 	((member major-mode syntactic-close--ml-modes)
